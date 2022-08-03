@@ -1,7 +1,7 @@
 <template>
     <header>
-        <h1>Vente en ligne</h1>
-        <p><i class="fa-solid icon-basket fa-basket-shopping"></i></p>
+        <h1><router-link to="/">Vente en ligne</router-link></h1>
+        <p><router-link to="/basket"><i class="fa-solid icon-basket fa-basket-shopping"></i></router-link></p>
     </header>
 </template>
 
@@ -31,15 +31,14 @@ export default {
             color: #2b7daf;
         }
 
-        h1 {
+        h1 > * {
             font-weight: 100;
             text-decoration: none;
             letter-spacing: 3px;
             text-transform: uppercase;
-            
+            text-decoration: none;
+            color: #2b7daf;
         }
-
-
     }
 
 </style>

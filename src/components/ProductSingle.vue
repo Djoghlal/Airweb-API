@@ -1,5 +1,5 @@
 <template>
-    <div class="row g-0">
+    <div class="row g-0 structure-card">
         <div class="col-md-4">
             <img :src="checkPic" class="img-fluid rounded-start" alt="Image">
         </div>
@@ -9,7 +9,7 @@
                 <p class="card-text">{{ product.description }}</p>
                 <div class="card-bottom">
                     <p class="bg-success text-white card-price">{{ product.price }}€</p>
-                    <p><i class="fa-solid fa-cart-plus card-icon-product"></i></p>
+                    <p><i v-on:click="$emit('productAddBasket', product)" class="fa-solid fa-cart-plus card-icon-product"></i></p>
                 </div>
             </div>
         </div>
@@ -19,6 +19,7 @@
 <script>
     export default {
         name: 'ProductSingle',
+        
         // props: ["product"], 
         props: {
             product:Object
@@ -26,12 +27,12 @@
         computed: {
             checkPic() {
                 if (this.product !== undefined && this.product.thumbnail_url === null) {
-                    return require('../assets/logo.png');
+                    return require('../assets/unknow.png');
                 } else {
                     return this.product.thumbnail_url;
                 }
             }
-        }
+        },
     }
 </script>
 
@@ -42,8 +43,10 @@
         justify-content: space-between;
 
         .card-price {
-            width: 80px;
+            width: 90px;
             padding: 15px;
+            display: flex;
+            justify-content: center;
             border-radius: 10px;
         }
 

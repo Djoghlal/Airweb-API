@@ -1,22 +1,21 @@
 <template>
-  <LandScape/>
-  <CompHeader/>
-  <ViewMain/>
+  <div>
+    <LandScape/>
+    <CompHeader/>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import LandScape from './components/Landscape.vue';
 import CompHeader from './components/Header.vue';
-import ViewMain from './views/Main.vue';
 
 export default {
   name: 'App',
   components: {
     LandScape,
     CompHeader,
-    ViewMain
-},
+  },
 }
 </script>
 
