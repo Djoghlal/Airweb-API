@@ -58,7 +58,7 @@
 
         .card-text {
             max-width: 100%;
-            height: 120px;
+            height: 130px;
         }
 
         .card-bottom {
