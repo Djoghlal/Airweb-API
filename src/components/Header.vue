@@ -20,7 +20,7 @@ export default {
         align-items: center;
         background-color: rgba($color: #FFFFFF, $alpha: 0.6);
         padding: 0 15px 0 15px;
-        margin-bottom: 60px;
+        border-radius: 0 0 20px 20px;
 
         h1, p {
             margin: 0px;

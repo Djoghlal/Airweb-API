@@ -1,6 +1,6 @@
 <template>
     <div class="row g-0 structure-card">
-        <div class="col-md-4">
+        <div class="col-md-4 container-img">
             <img :src="checkPic" class="img-fluid rounded-start" alt="Image">
         </div>
         <div class="col-md-8">
@@ -37,23 +37,61 @@
 </script>
 
 <style lang="scss">
-    .card-bottom {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
+    .structure-card {
+        padding: 0;
 
-        .card-price {
-            width: 90px;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            border-radius: 10px;
+        .container-img {
+            height: 100%;
+            padding: 5px;
+
+            img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
         }
 
-        .card-icon-product {
-            margin: 0 40px 0 0;
-            font-size: 1.8em;
+        .card-title {
             color: #2b7daf;
         }
+
+        .card-text {
+            max-width: 100%;
+            height: 120px;
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            .card-price {
+                width: 90px;
+                padding: 15px;
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+            }
+
+            .card-icon-product {
+                margin: 0 40px 0 0;
+                font-size: 1.8em;
+                color: #2b7daf;
+            }
+        }
     }
+
+
+    @media (min-width: 1024px) {
+        .card-title {
+            height: 50px;
+        }
+
+        .card-text {
+            max-width: 100%;
+            height: 135px;
+        }
+    }
+    
 </style>
