@@ -2,31 +2,24 @@
 
     <main>
         <h2>Votre panier</h2>
-        <div class="container-basket">
-            <div class="card-basket">
-                <div class="img-product">
-                    <img src="../assets/logo.png" alt="Test"/>
-                </div>
-                <div class="container-card-basket">
-                    <div class="name-product">Nom du produit</div>
-                    <div class="description-product">Description du produit elle doit être un peu plus grande afin de tester les 3 petits points</div>
-                    <div class="price-product bg-success text-white">1000€</div>
-                    <div class="delete-product bg-danger text-white">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card-basket">
-                <div class="img-product">
-                    <img src="../assets/logo.png" alt="Test"/>
-                </div>
-                <div class="container-card-basket">
-                    <div class="name-product">Nom du produit</div>
-                    <div class="description-product">Description du produit elle doit être un peu plus grande afin de tester les 3 petits points</div>
-                    <div class="price-product bg-success text-white card-price">1000€</div>
-                    <div class="delete-product bg-danger text-white">
-                        <i class="fa-solid fa-trash-can"></i>
+        <div v-if="errorMessageBasket" class="container-errors">
+            <img src="../assets/nothing.gif" alt="No product"/>
+        </div>
+
+        <div v-else class="container-basket">
+            <div>
+                <div class="card-basket">
+                    <div class="img-product">
+                        <img src="../assets/logo.png" alt="Test"/>
+                    </div>
+                    <div class="container-card-basket">
+                        <div class="name-product">Nom du produit</div>
+                        <div class="description-product">Description du produit elle doit être un peu plus grande afin de tester les 3 petits points</div>
+                        <div class="price-product bg-success text-white">1000€</div>
+                        <div class="delete-product bg-danger text-white">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,6 +33,32 @@
 
     export default {
         name: 'ViewBasket',
+        data() {
+            return {
+                storageBasketList: [],
+                errorMessageBasket: false,
+            }
+        },
+
+        methods: {
+            checkStorage() {
+                if (localStorage.product && localStorage.product.length > 0) {
+                    this.errorMessageBasket = false;
+                    // console.log('Le panier est plein !!!');
+                    // console.log(this.storageBasketList);
+                    this.storageBasketList = localStorage.product;
+                    
+                } else {
+                    // console.log('Le panier est VIDE !!!');
+                    this.errorMessageBasket = true;
+                }
+            },
+        },
+
+        //Page generate
+        mounted() {
+            this.checkStorage();
+        },
     }
 
 </script>
@@ -57,8 +76,9 @@
             margin: 50px 0 20px 0;
         }
 
-        .container-basket {
+        .container-basket, .container-errors {
             padding: 10px;
+            margin-top: 5px;
             border-radius: 10px;
             background-color: #FFFFFF;
 
@@ -101,6 +121,15 @@
                         margin-top: 10px;
                     }
                 }
+            }
+        }
+
+        .container-errors {
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 80%;
             }
         }
     }
