@@ -8,7 +8,7 @@
                 <h5 class="card-title">{{ product.label }}</h5>
                 <p class="card-text">{{ product.description }}</p>
                 <div class="card-bottom">
-                    <p class="bg-success text-white card-price">{{ product.price }}€</p>
+                    <p class="bg-success text-white card-price">{{ priceConvert(product.price) }}€</p>
                     <p><i v-on:click="$emit('productAddBasket', product)" class="fa-solid fa-cart-plus card-icon-product"></i></p>
                 </div>
             </div>
@@ -23,6 +23,11 @@
         // props: ["product"], 
         props: {
             product:Object
+        },
+        methods: {
+            priceConvert(priceProduct) {
+                return Math.round(priceProduct) / 100; 
+            }
         },
         computed: {
             checkPic() {

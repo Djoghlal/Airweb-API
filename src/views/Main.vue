@@ -46,6 +46,13 @@
 
             productAddBasket(item) {
                 console.log(item);
+
+                // Retrieving localStorage
+                if (localStorage.product && localStorage.product.length > 0 && this.basketList.length <= 0) {
+                    this.basketList = JSON.parse(localStorage.product);
+                }
+
+                // Add basket
                 this.basketList.push(item);
                 localStorage.setItem('product', JSON.stringify(this.basketList));
             },

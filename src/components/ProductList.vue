@@ -22,7 +22,7 @@
         },
         computed: {
             productList() {  
-                if (this.products !== undefined) {
+                if (this.products !== undefined && this.products.length > 0) {
                     return this.products.filter((product) => 
                     product.category_id === this.categoryId)
                 } else {
