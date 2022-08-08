@@ -1,13 +1,27 @@
 <template>
     <header>
         <h1><router-link to="/">Vente en ligne</router-link></h1>
-        <p><router-link to="/basket"><i class="fa-solid icon-basket fa-basket-shopping"></i></router-link></p>
+        <p>
+            <span class="number-basket">{{ calculBasketLength }}</span>
+            <router-link to="/basket">
+                <i class="fa-solid icon-basket fa-basket-shopping"></i>
+            </router-link>
+        </p>
     </header>
 </template>
 
 <script>
 export default {
     name: 'CompHeader',
+    computed: {
+        calculBasketLength() {
+            if (localStorage.product) {
+                return JSON.parse(localStorage.product).length;
+            } else {
+                return 0;
+            }
+        }
+    },
 }
 </script>
 
@@ -38,6 +52,18 @@ export default {
             text-transform: uppercase;
             text-decoration: none;
             color: #2b7daf;
+        }
+
+        .number-basket {
+            width: 10px;
+            height: 10px;
+            background: red;
+            padding: 5px 10px;
+            border-radius: 50%;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 0 7px 0 0;
         }
     }
 
