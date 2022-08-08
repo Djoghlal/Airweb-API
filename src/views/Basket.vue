@@ -2,7 +2,7 @@
 
     <main>
         <h2>Votre panier</h2>
-        <h3>Total du panier: {{ priceTotal() }}</h3>
+        <h3>Total du panier: {{ priceTotal() }}€</h3>
 
         <div v-if="errorMessageBasket" class="container-errors">
             <img src="../assets/nothing.gif" alt="No product"/>
@@ -43,7 +43,7 @@
 
         methods: {
             priceConvert(priceProduct) {
-                return Math.round(priceProduct) / 100; 
+                return priceProduct / 100; 
             },
             checkStorage() {
                 if (localStorage.product && localStorage.product.length > 0) {
@@ -70,12 +70,9 @@
                 }
             },
             priceTotal() {
-                // if (this.storageBasketList.length <= 0) {
-                //     return 0;
-                // } else {
-                //     return this.storageBasketList.filter((product) => product.price)
-                //     .reduce((totalPrice, product) => totalPrice += product.price);
-                // }
+                return this.storageBasketList.reduce((totalPrice, product) => {
+                    return totalPrice += product.price / 100;
+                }, 0);
             },
         },
 

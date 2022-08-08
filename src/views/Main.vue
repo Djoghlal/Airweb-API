@@ -28,7 +28,7 @@
         methods: {
             productList() {
                 axios
-                .get('http://localhost:3000/products')
+                .get(`${process.env.VUE_APP_URL}/products`)
                 .then((response) => {
                     this.products = response.data;
                     console.log(this.products);
@@ -37,7 +37,7 @@
 
             categoryList() {
                 axios
-                .get('http://localhost:3000/categories')
+                .get(`${process.env.VUE_APP_URL}/categories`)
                 .then((response) => {
                     this.categories = response.data;
                     console.log(this.categories);

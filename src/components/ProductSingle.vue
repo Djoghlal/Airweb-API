@@ -26,7 +26,7 @@
         },
         methods: {
             priceConvert(priceProduct) {
-                return Math.round(priceProduct) / 100; 
+                return priceProduct / 100; 
             }
         },
         computed: {
