@@ -8,6 +8,10 @@
             <img src="../assets/nothing.gif" alt="No product"/>
         </div>
 
+        <div v-else-if="validShop" class="p-3 mb-2 bg-success text-white">
+            <p>Votre commande a bien été effectuée</p>
+        </div>
+
         <div v-else class="container-basket">
             <div :key="index" v-for="(product, index) in storageBasketList">
                 <div class="card-basket">
@@ -24,6 +28,10 @@
                     </div>
                 </div>
             </div>
+            <div class="btn-basket">
+                <button v-on:click="validBasket" type="button" class="btn btn-primary">Valider ma commande</button>
+                <button v-on:click="deleteBasket" type="button" class="btn btn-danger">Effacer le panier</button>
+            </div>
         </div>
     </main>
 
@@ -38,6 +46,7 @@
             return {
                 storageBasketList: [],
                 errorMessageBasket: false,
+                validShop: false,
             }
         },
 
@@ -73,6 +82,18 @@
                 return this.storageBasketList.reduce((totalPrice, product) => {
                     return totalPrice += product.price / 100;
                 }, 0);
+            },
+
+            validBasket() {
+                this.validShop = true;
+                localStorage.removeItem('product');
+            },
+
+            deleteBasket() {
+                if (this.storageBasketList.length > 0) {
+                    localStorage.removeItem('product');
+                    this.$router.push("/");
+                }
             },
         },
 
@@ -150,6 +171,16 @@
                         margin-top: 10px;
                     }
                 }
+            }
+        }
+
+        .btn-basket {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+
+            button {
+                margin-right: 20px;
             }
         }
 

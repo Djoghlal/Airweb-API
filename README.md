@@ -35,12 +35,17 @@ nodemon
 git clone https://github.com/Djoghlal/airweb-API.git
 ```
 
-2. **Placement dans le dossier du Front-end**
+2. **Installer les dépendances NodeJS**
+```bash
+npm install
+```
+
+3. **Placement dans le dossier du Front-end**
 ```bash
 cd front-end
 ```
 
-3. **Lancement du serveur**
+4. **Lancement du serveur**
 ```bash
 npm run serve
 ```
@@ -57,7 +62,6 @@ un fichier .env lui même placé dans le gitignore. Je joindrai le fichier .env 
 
 ## Auteur
 <img src='https://img.shields.io/badge/Autor-Djoghlal Mickaël-blue' />
-<img src="https://img.shields.io/github/followers/MickaëlDjoghlal.svg?style=social&label=Follow&maxAge=2592000" />
 
 ## Licence 
 <img src='https://forthebadge.com/images/badges/open-source.svg'/>
